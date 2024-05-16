@@ -49,13 +49,13 @@ showdown.subParser('makehtml.italicsAndBold', function (text, options, globals) 
     });
   } else {
   */
-  text = text.replace(/\*\*\*(\S[\s\S]*?)\*\*\*/g, function (wm, m) {
+  text = text.replace(/\*_(\S[\s\S]*?)_\*/g, function (wm, m) {
     return (/\S$/.test(m)) ? parseInside (m, '<strong><em>', '</em></strong>') : wm;
   });
-  text = text.replace(/\*\*(\S[\s\S]*?)\*\*/g, function (wm, m) {
+  text = text.replace(/\*(\S[\s\S]*?)\*/g, function (wm, m) {
     return (/\S$/.test(m)) ? parseInside (m, '<strong>', '</strong>') : wm;
   });
-  text = text.replace(/\*([^\s*][\s\S]*?)\*/g, function (wm, m) {
+  text = text.replace(/_([^\s*][\s\S]*?)_/g, function (wm, m) {
     // !/^\*[^*]/.test(m) - test if it doesn't start with ** (since it seems redundant, we removed it)
     return (/\S$/.test(m)) ? parseInside (m, '<em>', '</em>') : wm;
   });
